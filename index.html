@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en-US">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Creative Coding</title>
+
+    <!--Connect to Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <canvas width="600" height="600"></canvas>
+
+    <script>
+      let canvas = document.querySelector('canvas');
+      let context = canvas.getContext('2d');
+
+      const width = canvas.width;
+      const height = canvas.height;
+
+      const boxWidth = 50;
+      const boxHeight = 50;
+      const boxGap = 10;
+      const count = 5;
+      let x, y;
+
+      xStart = (width - ((boxWidth*count) + (boxGap*(count-1))))/2;
+      yStart = (height - ((boxWidth*count) + (boxGap*(count-1))))/2;;
+
+      for (let i = 0; i < count; i++) {
+        for (let j = 0; j < count; j++) {
+          x = xStart + i*(boxWidth + boxGap);
+          y = yStart + j*(boxHeight + boxGap);
+          
+          context.beginPath();
+          context.rect(x, y, boxWidth, boxHeight);
+          context.stroke();
+
+          if (Math.random() > 0.5) {
+            context.beginPath();
+            context.rect(x+5, y+5, boxWidth-10, boxHeight-10);
+            context.stroke();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

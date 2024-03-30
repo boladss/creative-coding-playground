@@ -1,14 +1,26 @@
 // Initialize Canvases
 import initArcs from "./arcs";
+import initNodes from "./nodes";
+export { colorA, colorB };
 
 // function
 
+const colorA = getComputedStyle(document.body).getPropertyValue('--black');
+const colorB = getComputedStyle(document.body).getPropertyValue('--white');
+
 function init() {
+  
   let canvas1 = document.getElementById("canvas1") as HTMLCanvasElement;
   let context1 = canvas1.getContext('2d') as CanvasRenderingContext2D;
-  const width1 = canvas1.width;
-  const height1 = canvas1.height;
-  initArcs(context1, width1, height1);
+  const width = canvas1.width;
+  const height = canvas1.height;
+  // console.log("nodes call");
+  initNodes(context1, width, height);
+  
+  let canvas2 = document.getElementById("canvas2") as HTMLCanvasElement;
+  let context2 = canvas2.getContext('2d') as CanvasRenderingContext2D;
+  // console.log("arcs call");
+  initArcs(context2, width, height);
 }
 
 init();

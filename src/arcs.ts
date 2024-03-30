@@ -1,3 +1,5 @@
+import { colorA, colorB } from "./script"
+
 // Classes
 class Vector {
   constructor(
@@ -23,7 +25,7 @@ class Segment {
   }
 
   draw(context: CanvasRenderingContext2D): void {
-    context.fillStyle = 'black';
+    context.fillStyle = colorA;
 
     // if (this.label === 50) context.fillStyle = 'red';
     context.save();
@@ -57,17 +59,17 @@ function getRandom(min: number, max: number) {
 export default function initArcs(context: CanvasRenderingContext2D, width: number, height: number): void {
   const segments1: Segment[] = [];
   const segments2: Segment[] = [];
-  const count = 50;
+  const count = 75;
+  const speed = 0.005;
+  const flag = true;
 
-  const cx = width * 0.5;
-  const cy = height * 0.5;
-  const center = new Vector(cx, cy);
+  const center = new Vector(width*0.5, width*0.5);
 
-  const w = width * 0.01;
+  const w = 5;
   const h = height * 2;
   const radius = width * 0.25;
 
-  const generateSegments = (segments: Segment[], flag: boolean) => {
+  const generateSegments = (segments: Segment[], direction: number) => {
     for (let i = 0; i < count; i++) {
       const slice = degToRad(360/count);
       const angle = slice * i;
@@ -77,17 +79,17 @@ export default function initArcs(context: CanvasRenderingContext2D, width: numbe
       // let wScaled = w * getRandom(0.1, 1);
       let wScaled = w*0.25;
 
-      let speed = flag ? 0.005 : -0.005;
+      let velocity = direction * speed;
 
-      segments.push(new Segment(position, speed, angle, wScaled, h, i));
+      segments.push(new Segment(position, velocity, angle, wScaled, h, i));
     }
   };
 
-  generateSegments(segments1, true);
-  generateSegments(segments2, false);
+  generateSegments(segments1, 1);
+  if (flag) generateSegments(segments2, -1);
 
   const animate = () => {
-    context.fillStyle = 'white';
+    context.fillStyle = colorB;
     context.fillRect(0, 0, width, height);
   
     segments1.forEach(segment => {
@@ -95,7 +97,7 @@ export default function initArcs(context: CanvasRenderingContext2D, width: numbe
       segment.draw(context);
     })
 
-    segments2.forEach(segment => {
+    if (flag) segments2.forEach(segment => {
       segment.update(center, radius);
       segment.draw(context);
     })

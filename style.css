@@ -1,21 +1,51 @@
+:root {
+  --black: #262626;
+  --white: white;
+}
+
 * {
   font-family: "IBM Plex Mono", monospace;
 }
 
-#page-wrapper {
-  display: flex;
-  flex-direction: row;
+.center-content {
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  text-align: center;
+} 
+
+#page-wrapper {
+  display: block;
+  padding: 10vh;
+  height: 100%;
+}
+
+#canvas-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 canvas {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
   margin: 10pt;
-  transition: 0.25s;
+  height: min(50vh, 50vw);
+  width: min(50vh, 50vw);
+  transition: transform 0.5s ease;
 }
 
 canvas:hover {
-  transform: scale(1.2);
+  transform: scale(1.25);
+}
+
+#header {
+  color: var(--black);
+  background-color: transparent;
+  padding: 10px;
+  text-decoration: underline;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+#header:hover {
+  background-color: var(--black);
+  color: var(--white)
 }

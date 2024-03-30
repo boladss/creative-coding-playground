@@ -1,4 +1,6 @@
 import { colorA, colorB } from "./script"
+import { degToRad } from "./helper";
+// import { getRandomInt, degToRad } from "./helper";
 
 // Classes
 class Vector {
@@ -47,14 +49,6 @@ function getPosition(center: Vector, radius: number, angle: number): Vector {
   return new Vector(x, y);
 }
 
-function degToRad(n: number) {
-  return n * Math.PI / 180;
-}
-
-function getRandom(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
-
 // Main
 export default function initArcs(context: CanvasRenderingContext2D, width: number, height: number): void {
   const segments1: Segment[] = [];
@@ -76,10 +70,10 @@ export default function initArcs(context: CanvasRenderingContext2D, width: numbe
   
       const position = getPosition(center, radius, angle);
   
-      // let wScaled = w * getRandom(0.1, 1);
-      let wScaled = w*0.25;
+      // const wScaled = w * getRandom(0.1, 1);
+      const wScaled = w*0.25;
 
-      let velocity = direction * speed;
+      const velocity = direction * speed;
 
       segments.push(new Segment(position, velocity, angle, wScaled, h, i));
     }
@@ -102,8 +96,8 @@ export default function initArcs(context: CanvasRenderingContext2D, width: numbe
       segment.draw(context);
     })
   
-    let fps = 60;
-    let fpsInterval = 1000/fps;
+    const fps = 60;
+    const fpsInterval = 1000/fps;
   
     setTimeout(() => {
       window.requestAnimationFrame(animate);

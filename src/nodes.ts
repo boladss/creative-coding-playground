@@ -1,4 +1,5 @@
-import { colorA, colorB } from "./script"
+import { colorA, colorB } from "./script";
+import { getRandomInt } from "./helper";
 
 // Classes
 class Vector {
@@ -26,8 +27,8 @@ class Agent {
     const vMax = 1;
     if (radius == null) radius = 10;
 
-    const position = new Vector(getRandom(0, width), getRandom(0, height));
-    const velocity = new Vector(vMax*getRandom(-1,1), vMax*getRandom(-1,1));
+    const position = new Vector(getRandomInt(0, width), getRandomInt(0, height));
+    const velocity = new Vector(vMax*getRandomInt(-1,1), vMax*getRandomInt(-1,1));
 
     return new Agent(position, velocity, radius, 0);
   }
@@ -62,9 +63,6 @@ class Agent {
 }
 
 // Helper functions
-function getRandom(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
 
 function mapRange(value: number, inputMin: number, inputMax: number, outputMin: number, outputMax: number, clamp?: boolean): number {
   // Reference:
@@ -141,8 +139,8 @@ export default function initNodes(context: CanvasRenderingContext2D, width: numb
     });
 
     // Frame settings
-    let fps = 60;
-    let fpsInterval = 1000/fps;
+    const fps = 60;
+    const fpsInterval = 1000/fps;
 
     setTimeout(() => {
       window.requestAnimationFrame(animate);

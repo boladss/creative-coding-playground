@@ -3,9 +3,10 @@ const math = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
 const settings = {
-  dimensions: [ 1000, 1000 ],
+  dimensions: [ 2048, 2048 ],
   animate: true,
 };
+
 
 const sketch = ({ context, width, height }) => {
   const agents = [];
@@ -35,7 +36,7 @@ const sketch = ({ context, width, height }) => {
         
         distance = agent.position.getDistance(other.position);
         if (distance < 100) {
-          context.lineWidth = math.mapRange(distance, 0, 100, 10, 1);
+          context.lineWidth = math.mapRange(distance, 0, 200, 20, 1);
 
           context.beginPath();
           context.moveTo(agent.position.x, agent.position.y);
@@ -50,7 +51,7 @@ const sketch = ({ context, width, height }) => {
       agent.draw(context);
       // agent.bounce(width,height);
       agent.wrap(width,height);
-    })
+    });
   };
 };
 
@@ -77,7 +78,7 @@ class Agent {
     this.position = new Vector(x,y);
     this.velocity = new Vector(vMax*random.range(-1,1),vMax*random.range(-1,1));
     // this.radius = random.range(5,15);
-    this.radius = 10;
+    this.radius = 20;
   }
 
   bounce(width, height) {
@@ -102,7 +103,7 @@ class Agent {
     context.translate(this.position.x, this.position.y);
 
     // context.fillStyle = 'black';
-    context.lineWidth = 1;
+    context.lineWidth = 2;
 
     context.beginPath();
     context.arc(0, 0, this.radius, 0, Math.PI*2);

@@ -15,40 +15,13 @@
   </head>
 
   <body>
-    <canvas width="600" height="600"></canvas>
+    <div id="page-wrapper">
+      <canvas id="canvas1" width="300" height="300"></canvas>
+      <canvas id="canvas2" width="300" height="300"></canvas>
+      <canvas id="canvas3" width="300" height="300"></canvas>
+    </div>
 
-    <script>
-      let canvas = document.querySelector('canvas');
-      let context = canvas.getContext('2d');
-
-      const width = canvas.width;
-      const height = canvas.height;
-
-      const boxWidth = 50;
-      const boxHeight = 50;
-      const boxGap = 10;
-      const count = 5;
-      let x, y;
-
-      xStart = (width - ((boxWidth*count) + (boxGap*(count-1))))/2;
-      yStart = (height - ((boxWidth*count) + (boxGap*(count-1))))/2;;
-
-      for (let i = 0; i < count; i++) {
-        for (let j = 0; j < count; j++) {
-          x = xStart + i*(boxWidth + boxGap);
-          y = yStart + j*(boxHeight + boxGap);
-          
-          context.beginPath();
-          context.rect(x, y, boxWidth, boxHeight);
-          context.stroke();
-
-          if (Math.random() > 0.5) {
-            context.beginPath();
-            context.rect(x+5, y+5, boxWidth-10, boxHeight-10);
-            context.stroke();
-          }
-        }
-      }
-    </script>
+    <script src="./script.js" type="module"></script>
+    <!-- <script src="./src/arcs.js"></script> -->
   </body>
 </html>

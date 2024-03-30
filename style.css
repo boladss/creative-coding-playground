@@ -2,20 +2,33 @@
   font-family: "IBM Plex Mono", monospace;
 }
 
-#page-wrapper {
-  display: flex;
-  flex-direction: row;
+.center-content {
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  text-align: center;
+} 
+
+#page-wrapper {
+  display: box;
+  padding: 10vh;
+  height: 100%;
+}
+
+#canvas-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 canvas {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
   margin: 10pt;
+  height: min(50vh, 50vw);
+  width: min(50vh, 50vw);
   transition: 0.25s;
 }
 
 canvas:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
+
 }

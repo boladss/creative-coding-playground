@@ -1,6 +1,7 @@
 // Initialize Canvases
 import initArcs from "./arcs";
 import initNodes from "./nodes";
+import initBoids from "./boids";
 export { colorA, colorB };
 
 // function
@@ -21,6 +22,11 @@ function init() {
   let context2 = canvas2.getContext('2d') as CanvasRenderingContext2D;
   // console.log("arcs call");
   initArcs(context2, width, height);
+
+  let canvas3 = document.getElementById("canvas3") as HTMLCanvasElement;
+  let context3 = canvas3.getContext('2d') as CanvasRenderingContext2D;
+  // console.log("boids call");
+  initBoids(context3, width, height);
 }
 
 init();

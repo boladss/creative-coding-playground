@@ -1,7 +1,18 @@
 :root {
-  --black: #262626;
-  --white: white;
+  --foreground-color: #262626;
+  --background-color: white;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: white;
+    --background-color: #262626;
+  }
+
+  body {
+    background-color: var(--background-color);
+  }
+} */
 
 * {
   font-family: "IBM Plex Mono", monospace;
@@ -38,7 +49,7 @@ canvas:hover {
 }
 
 #header {
-  color: var(--black);
+  color: var(--foreground-color);
   background-color: transparent;
   padding: 10px;
   text-decoration: underline;
@@ -46,8 +57,8 @@ canvas:hover {
 }
 
 #header:hover {
-  background-color: var(--black);
-  color: var(--white)
+  background-color: var(--foreground-color);
+  color: var(--background-color)
 }
 
 @media screen and (max-width: 700px) {

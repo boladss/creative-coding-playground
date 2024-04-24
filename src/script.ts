@@ -6,8 +6,8 @@ export { colorA, colorB };
 
 // function
 
-const colorA = getComputedStyle(document.body).getPropertyValue('--black');
-const colorB = getComputedStyle(document.body).getPropertyValue('--white');
+const colorA = getComputedStyle(document.body).getPropertyValue('--foreground-color');
+const colorB = getComputedStyle(document.body).getPropertyValue('--background-color');
 
 function init() {
   

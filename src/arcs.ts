@@ -80,7 +80,7 @@ export default function initArcs(context: CanvasRenderingContext2D, width: numbe
   };
 
   generateSegments(segments1, 1);
-  if (flag) generateSegments(segments2, -1);
+  // if (flag) generateSegments(segments2, -1);
 
   const animate = () => {
     context.fillStyle = colorB;
